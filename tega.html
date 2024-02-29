@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone Giveaway</title>
+    <link rel="stylesheet" href="tega.css">
+</head>
+<body bgcolor="black">
+    <div id="countdown"></div>
+    <p id="endDate"></p>
+    <p id="endTime"></p>
+    <h1>IPHONE GIVEAWAY</h1>
+    <img src="/pexels-avinash-kumar-16004744.jpg" alt="">
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus impedit obcaecati, mollitia reiciendis 
+        dicta aperiam atque debitis ullam eius placeat error ab totam at quos magnam, quae, quo aliquid velit fugiat. 
+        Temporibus nobis molestias asperiores ad totam minus nisi maiores quidem! Ab qui perspiciatis quis. 
+        Harum modi velit quos, dignissimos quas suscipit nihil? Rem, ratione dicta. 
+        Provident ut eligendi adipisci temporibus saepe maxime, cum, distinctio quod repudiandae, quia molestias officia harum 
+         Neque reprehenderit officiis beatae dolorem mollitia aliquam cupiditate odit doloremque quos autem recusandae iure 
+        eius minima ipsum corrupti laboriosam vero, quasi voluptatum sed qui! Qui.</p>
+        <div id="countdown"></div>
+
+    <p id="endDate"></p>
+    <p id="endTime"></p>
+
+    <script>
+        // Set the end date and time for the giveaway (24 days from now)
+        const endDate = new Date();
+        endDate.setDate(endDate.getDate() + 24);
+  
+        // Function to update the countdown timer
+        function updateCountdown() {
+          const currentDate = new Date();
+          const timeDifference = endDate - currentDate;
+  
+          const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const minutes = Math.floor(
+            (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+          );
+          const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+  
+          document.getElementById(
+            "countdown"
+          ).innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+  
+        // Function to update the end date and time paragraphs
+        function updateDateTime() {
+          const options = {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          };
+  
+          const formattedDate = endDate.toLocaleDateString("en-US", options);
+          const formattedTime = endDate.toLocaleTimeString("en-US", {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true,
+          });
+  
+          document.getElementById(
+            "endDate"
+          ).innerText = `Giveaway Ends On ${formattedDate}`;
+          document.getElementById("endTime").innerText = `At ${formattedTime}`;
+        }
+  
+        // Initial call to update the countdown and date/time paragraphs
+        updateCountdown();
+        updateDateTime();
+  
+        // Update the countdown every second
+        setInterval(updateCountdown, 1000);
+      </script>
+</body>
+</html>
